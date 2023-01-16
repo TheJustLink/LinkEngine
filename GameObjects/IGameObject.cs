@@ -1,4 +1,6 @@
-﻿namespace GameProject
+﻿using LinkEngine.Components;
+
+namespace LinkEngine.GameObjects
 {
     public interface IGameObject
     {

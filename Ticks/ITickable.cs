@@ -1,4 +1,6 @@
-﻿namespace GameProject
+﻿using LinkEngine.Time;
+
+namespace LinkEngine.Ticks
 {
     interface ITickable
     {

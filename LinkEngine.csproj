@@ -5,12 +5,17 @@
     <Nullable>enable</Nullable>
     <AnalysisLevel>latest-all</AnalysisLevel>
     <EnableNETAnalyzers>True</EnableNETAnalyzers>
+    <ProduceReferenceAssembly>False</ProduceReferenceAssembly>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove=".gitignore" />
     <None Remove="LICENSE" />
     <None Remove="README.md" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Core\" />
   </ItemGroup>
 
 </Project>

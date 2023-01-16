@@ -1,6 +1,11 @@
 ﻿using System;
 
-namespace GameProject
+
+using LinkEngine.Engines;
+using LinkEngine.Ticks;
+using LinkEngine.Ticks.Loops;
+
+namespace LinkEngine
 {
     public class Application
     {
@@ -19,7 +24,7 @@ namespace GameProject
                 new TickCounter(_engine.Logger),
                 new Game(_engine)
             );
-            
+
             var compositeTickLoop = new CompositeTickLoop(
                 new DefaultTickLoop(mainTickables)
             );
@@ -30,11 +35,11 @@ namespace GameProject
 
             return compositeTickLoop;
         }
-        
+
         public void Start()
         {
             _engine.Logger.Write("App started");
-            
+
             _tickLoop.Start();
         }
         public void Stop()

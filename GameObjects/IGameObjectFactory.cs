@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace GameProject
+namespace LinkEngine.GameObjects
 {
     public interface IGameObjectFactory
     {

@@ -1,4 +1,8 @@
-﻿namespace GameProject
+﻿using LinkEngine.Engines;
+using LinkEngine.Ticks;
+using LinkEngine.Time;
+
+namespace LinkEngine
 {
     class Game : ITickable
     {
@@ -13,7 +17,7 @@
         {
             if (_initialized == false)
                 Initialize();
-            
+
             _ship.Tick(time);
         }
 

@@ -1,4 +1,4 @@
-﻿namespace GameProject
+﻿namespace LinkEngine.IO
 {
     public interface IOutput<in T>
     {

@@ -1,6 +1,6 @@
 ﻿using System.Numerics;
 
-namespace GameProject
+namespace LinkEngine.Components
 {
     public interface ITransform : ITransform2D
     {
@@ -21,7 +21,7 @@ namespace GameProject
         Vector2 Position { get; set; }
         float Rotation { get; set; }
         Vector2 Scale { get; set; }
-        
+
         Vector2 LocalPosition { get; set; }
         float LocalRotation { get; set; }
         Vector2 LocalScale { get; set; }

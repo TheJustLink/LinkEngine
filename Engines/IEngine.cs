@@ -1,6 +1,10 @@
 ﻿using System.Numerics;
+using LinkEngine.Assets;
+using LinkEngine.GameObjects;
+using LinkEngine.IO;
+using LinkEngine.Logs;
 
-namespace GameProject
+namespace LinkEngine.Engines
 {
     public interface IEngine
     {

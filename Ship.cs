@@ -2,8 +2,15 @@
 using System.Diagnostics;
 using System.Numerics;
 using System.Threading.Tasks;
+using LinkEngine.Assets;
+using LinkEngine.Components;
+using LinkEngine.Engines;
+using LinkEngine.GameObjects;
+using LinkEngine.IO;
+using LinkEngine.Ticks;
+using LinkEngine.Time;
 
-namespace GameProject
+namespace LinkEngine
 {
     class Ship : ITickable
     {
@@ -11,18 +18,18 @@ namespace GameProject
 
         private readonly IInput<Vector2> _input;
         private readonly IEngine _engine;
-        
+
         private ITransform2D _transform;
 
         private bool _initialized;
         private Vector2 _inputDirection;
-        
+
         public Ship(IInput<Vector2> input, IEngine engine)
         {
             _input = input;
             _engine = engine;
         }
-        
+
         public async Task InitializeAsync()
         {
             var sw = Stopwatch.StartNew();
@@ -39,7 +46,7 @@ namespace GameProject
             _engine.Logger.Write($"Ship initialized for {elapsedTime}ms");
 
             sw.Stop();
-            
+
             _transform = gameObjectTask.Result.Transform;
 
             _initialized = true;

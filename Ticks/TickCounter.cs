@@ -1,11 +1,13 @@
 ﻿using System;
+using LinkEngine.IO;
+using LinkEngine.Time;
 
-namespace GameProject
+namespace LinkEngine.Ticks
 {
     class TickCounter : ITickable
     {
         private readonly IOutput<string> _output;
-        
+
         private int _tick;
         private TimeSpan _time;
 

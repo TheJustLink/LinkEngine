@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using LinkEngine.Time;
 
-namespace GameProject
+namespace LinkEngine.Ticks
 {
     class CompositeTickable : ITickable
     {

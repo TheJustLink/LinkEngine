@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Threading;
+using LinkEngine.Time;
 
-namespace GameProject
+namespace LinkEngine.Ticks.Loops
 {
     class DefaultTickLoop : ITickLoop, ITickable
     {
@@ -16,11 +17,11 @@ namespace GameProject
 
         private bool _isRunning;
         private bool _isStopping;
-        
+
         public DefaultTickLoop(ITickable tickable, int tickRate = 60, int timeout = 3)
         {
             _tickable = tickable;
-            
+
             _tickTimestep = TimeSpan.FromTicks((long)10_000_000m / tickRate);
             _stopTimeout = TimeSpan.FromSeconds(timeout);
 
@@ -32,7 +33,7 @@ namespace GameProject
         {
             _isRunning = true;
             _thread.Start();
-            
+
             Started?.Invoke();
         }
         public void Stop()

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace GameProject
+namespace LinkEngine.Ticks.Loops
 {
     class CompositeTickLoop : ITickLoop
     {
