@@ -2,7 +2,7 @@
 
 namespace LinkEngine.Time
 {
-    class ElapsedTime
+    public class ElapsedTime
     {
         public float DeltaSeconds => (float)Delta.TotalSeconds;
         public float TotalSeconds => (float)Total.TotalSeconds;

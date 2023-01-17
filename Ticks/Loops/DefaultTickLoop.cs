@@ -4,7 +4,7 @@ using LinkEngine.Time;
 
 namespace LinkEngine.Ticks.Loops
 {
-    class DefaultTickLoop : ITickLoop, ITickable
+    public class DefaultTickLoop : ITickLoop, ITickable
     {
         public event Action? Started;
         public event Action? Stopped;

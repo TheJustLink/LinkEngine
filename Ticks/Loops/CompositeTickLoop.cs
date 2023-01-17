@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LinkEngine.Ticks.Loops
 {
-    class CompositeTickLoop : ITickLoop
+    public class CompositeTickLoop : ITickLoop
     {
         public event Action? Started;
         public event Action? Stopped;

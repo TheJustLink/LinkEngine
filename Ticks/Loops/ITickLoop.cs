@@ -2,7 +2,7 @@
 
 namespace LinkEngine.Ticks.Loops
 {
-    interface ITickLoop
+    public interface ITickLoop
     {
         event Action? Started;
         event Action? Stopped;

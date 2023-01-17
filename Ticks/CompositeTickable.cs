@@ -3,7 +3,7 @@ using LinkEngine.Time;
 
 namespace LinkEngine.Ticks
 {
-    class CompositeTickable : ITickable
+    public class CompositeTickable : ITickable
     {
         private readonly List<ITickable> _tickables;
 

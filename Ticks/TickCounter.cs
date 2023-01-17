@@ -4,7 +4,7 @@ using LinkEngine.Time;
 
 namespace LinkEngine.Ticks
 {
-    class TickCounter : ITickable
+    public class TickCounter : ITickable
     {
         private readonly IOutput<string> _output;
 

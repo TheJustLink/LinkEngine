@@ -2,7 +2,7 @@
 
 namespace LinkEngine.Ticks
 {
-    interface ITickable
+    public interface ITickable
     {
         void Tick(ElapsedTime time);
     }
