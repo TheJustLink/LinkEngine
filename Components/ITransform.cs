@@ -15,15 +15,4 @@ namespace LinkEngine.Components
         new Quaternion LocalRotation { get; set; }
         new Vector3 LocalScale { get; set; }
     }
-
-    public interface ITransform2D
-    {
-        Vector2 Position { get; set; }
-        float Rotation { get; set; }
-        Vector2 Scale { get; set; }
-
-        Vector2 LocalPosition { get; set; }
-        float LocalRotation { get; set; }
-        Vector2 LocalScale { get; set; }
-    }
 }
