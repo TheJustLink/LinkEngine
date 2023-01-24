@@ -2,6 +2,9 @@
 {
     public interface IComponent
     {
-        void Destroy();
+        bool IsEnabled { get; }
+
+        void Enable();
+        void Disable();
     }
 }

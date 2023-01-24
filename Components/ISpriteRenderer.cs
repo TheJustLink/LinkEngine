@@ -1,10 +1,11 @@
 ﻿using LinkEngine.Assets;
-using LinkEngine.IO;
+using LinkEngine.Graphics;
 
 namespace LinkEngine.Components
 {
-    public interface ISpriteRenderer : IOutput<ISprite>
+    public interface ISpriteRenderer : IComponent
     {
-        ISprite Sprite { get; set; }
+        ISprite? Sprite { get; set; }
+        Color Color { get; set; }
     }
 }

@@ -27,6 +27,8 @@ namespace LinkEngine.Ticks.Loops
 
             _thread = new Thread(Loop);
             _thread.IsBackground = true;
+            _thread.Name = "Tick Loop Thread (" + tickRate + ")/sec";
+            _thread.Priority = ThreadPriority.Highest;
         }
 
         public void Start()

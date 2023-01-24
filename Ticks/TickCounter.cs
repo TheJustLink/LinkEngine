@@ -12,15 +12,15 @@ namespace LinkEngine.Ticks
         private TimeSpan _time;
 
         public TickCounter(IOutput<string> output) => _output = output;
-
+        
         public void Tick(ElapsedTime time)
         {
             _tick++;
             _time += time.Delta;
 
-            if (_time < TimeSpan.FromSeconds(1)) return;
+            if (_time < TimeSpan.FromSeconds(10)) return;
 
-            _output.Write($"{_tick}/{_time.TotalSeconds:N2} secs");
+            _output.Write($"{_tick / 10f}/{_time.TotalSeconds / 10f:N2} secs ({_tick}/{_time.TotalSeconds:N2} secs)");
 
             _tick = 0;
             _time = TimeSpan.Zero;
