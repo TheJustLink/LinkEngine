@@ -1,6 +1,4 @@
-﻿using System.Numerics;
-
-namespace LinkEngine.Math
+﻿namespace LinkEngine.Math
 {
     public static class FloatExtensions
     {

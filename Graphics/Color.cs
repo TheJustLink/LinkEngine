@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Text;
-using System.Numerics;
 using System.Diagnostics;
+using System.Numerics;
 using System.Runtime.Serialization;
 
 using LinkEngine.Math;
+
+using Vector3 = LinkEngine.Math.Vector3;
 
 namespace LinkEngine.Graphics
 {
@@ -177,7 +179,7 @@ namespace LinkEngine.Graphics
         /// <summary>
         /// Constructs an RGBA color from the XYZW unit length components of a vector.
         /// </summary>
-        /// <param name="color">A <see cref="Vector4"/> representing color.</param>
+        /// <param name="color">A <see cref="System.Numerics.Vector4"/> representing color.</param>
         public Color(Vector4 color)
             : this((int)(color.X * 255f), (int)(color.Y * 255f), (int)(color.Z * 255f), (int)(color.W * 255f))
         {
@@ -186,7 +188,7 @@ namespace LinkEngine.Graphics
         /// <summary>
         /// Constructs an RGBA color from the XYZ unit length components of a vector. Alpha value will be opaque.
         /// </summary>
-        /// <param name="color">A <see cref="Vector3"/> representing color.</param>
+        /// <param name="color">A <see cref="LinkEngine.Math.Vector3"/> representing color.</param>
         public Color(Vector3 color)
             : this((int)(color.X * 255f), (int)(color.Y * 255f), (int)(color.Z * 255f))
         {
@@ -1774,9 +1776,9 @@ namespace LinkEngine.Graphics
         }
 
         /// <summary>
-        /// Gets a <see cref="Vector4"/> representation for this object.
+        /// Gets a <see cref="System.Numerics.Vector4"/> representation for this object.
         /// </summary>
-        /// <returns>A <see cref="Vector4"/> representation for this object.</returns>
+        /// <returns>A <see cref="System.Numerics.Vector4"/> representation for this object.</returns>
         public Vector4 ToVector4()
         {
             return new Vector4(R / 255.0f, G / 255.0f, B / 255.0f, A / 255.0f);

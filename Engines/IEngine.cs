@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Numerics;
 
 using LinkEngine.Assets;
 using LinkEngine.GameObjects;
 using LinkEngine.IO;
 using LinkEngine.IO.Mouse;
 using LinkEngine.Logs;
+using LinkEngine.Math;
 
 namespace LinkEngine.Engines
 {

@@ -1,4 +1,4 @@
-﻿using System.Numerics;
+﻿using LinkEngine.Math;
 
 namespace LinkEngine.Components
 {

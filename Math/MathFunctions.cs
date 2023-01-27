@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Numerics;
 
 namespace LinkEngine.Math
 {
@@ -12,7 +11,7 @@ namespace LinkEngine.Math
         /// <summary>
         ///   <para>A tiny floating point value (Read Only).</para>
         /// </summary>
-        public static float Epsilon = s_isFlushToZeroEnabled ? s_floatMinNormal : s_floatMinDenormal;
+        public static readonly float Epsilon = s_isFlushToZeroEnabled ? s_floatMinNormal : s_floatMinDenormal;
 
         /// <summary>
         ///   <para>Degrees-to-radians conversion constant.</para>
@@ -22,6 +21,24 @@ namespace LinkEngine.Math
         ///   <para>Radians-to-degrees conversion constant.</para>
         /// </summary>
         public const float RadToDeg = 57.29578f;
+
+        /// <summary>
+        ///   <para>Degrees-to-radians conversion constant.</para>
+        /// </summary>
+        public static readonly Vector2 DegToRad2 = DegToRad;
+        /// <summary>
+        ///   <para>Radians-to-degrees conversion constant.</para>
+        /// </summary>
+        public static readonly Vector2 RadToDeg2 = RadToDeg;
+
+        /// <summary>
+        ///   <para>Degrees-to-radians conversion constant.</para>
+        /// </summary>
+        public static readonly Vector3 DegToRad3 = DegToRad;
+        /// <summary>
+        ///   <para>Radians-to-degrees conversion constant.</para>
+        /// </summary>
+        public static readonly Vector3 RadToDeg3 = RadToDeg;
 
         public const float Deg360InRad = (float)(System.Math.PI * 2.0);
         public const float Deg180InRad = (float)System.Math.PI;
@@ -277,7 +294,6 @@ namespace LinkEngine.Math
 
             return num;
         }
-
         /// <summary>
         ///   <para>Returns the smallest of two or more values.</para>
         /// </summary>
@@ -299,7 +315,6 @@ namespace LinkEngine.Math
 
             return num;
         }
-
         /// <summary>
         ///   <para>Returns largest of two or more values.</para>
         /// </summary>
@@ -321,7 +336,6 @@ namespace LinkEngine.Math
             
             return num;
         }
-
         /// <summary>
         ///   <para>Returns the largest of two or more values.</para>
         /// </summary>
@@ -369,8 +383,40 @@ namespace LinkEngine.Math
                    System.Math.Max(1E-06f * System.Math.Max(System.Math.Abs(a), System.Math.Abs(b)), Epsilon * 8f);
         }
 
-        public static bool LineIntersection(Vector2 point1, Vector2 point2, Vector2 point3, Vector2 point4, ref Vector2 result)
+        /// <summary>
+        /// Returns an approximation of the inverse square root of left number.
+        /// </summary>
+        /// <param name="x">A number.</param>
+        /// <returns>An approximation of the inverse square root of the specified number, with an upper error bound of 0.001.</returns>
+        /// <remarks>
+        /// This is an improved implementation of the the method known as Carmack's inverse square root
+        /// which is found in the Quake III source code. This implementation comes from
+        /// http://www.codemaestro.com/reviews/review00000105.html. For the history of this method, see
+        /// http://www.beyond3d.com/content/articles/8/.
+        /// </remarks>
+        public static float InverseSqrtFast(float x)
         {
+            unsafe
+            {
+                var xhalf = 0.5f * x;
+
+                // Read bits as integer.
+                var i = *(int*)&x;
+                // Make an initial guess for Newton-Raphson approximation
+                i = 0x5f375a86 - (i >> 1);
+                // Convert bits back to float
+                x = *(float*)&i;
+                // Perform left single Newton-Raphson step.
+                x *= 1.5f - xhalf * x * x;
+                
+                return x;
+            }
+        }
+
+        public static bool LineIntersection(Vector2 point1, Vector2 point2, Vector2 point3, Vector2 point4, out Vector2 result)
+        {
+            result = Vector2.Zero;
+
             var num1 = point2.X - point1.X;
             var num2 = point2.Y - point1.Y;
             var num3 = point4.X - point3.X;
@@ -385,14 +431,15 @@ namespace LinkEngine.Math
             var num7 = point3.Y - point1.Y;
 
             var num8 = (num6 * num4 - num7 * num3) / num5;
-            
-            result.X = point1.X + num8 * num1;
-            result.Y = point1.Y + num8 * num2;
+
+            result = new Vector2(point1.X + num8 * num1, point1.Y + num8 * num2);
             
             return true;
         }
-        public static bool LineSegmentIntersection(Vector2 point1, Vector2 point2, Vector2 point3, Vector2 point4, ref Vector2 result)
+        public static bool LineSegmentIntersection(Vector2 point1, Vector2 point2, Vector2 point3, Vector2 point4, out Vector2 result)
         {
+            result = Vector2.Zero;
+
             var num1 = point2.X - point1.X;
             var num2 = point2.Y - point1.Y;
             var num3 = point4.X - point3.X;
@@ -415,9 +462,8 @@ namespace LinkEngine.Math
             
             if (num9 is < 0f or > 1f)
                 return false;
-            
-            result.X = point1.X + num8 * num1;
-            result.Y = point1.Y + num8 * num2;
+
+            result = new Vector2(point1.X + num8 * num1, point1.Y + num8 * num2);
 
             return true;
         }
